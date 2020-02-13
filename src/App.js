@@ -7,6 +7,7 @@ import Logo from './Components/Logo/Logo'
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm'
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition'
 import Rank from './Components/Rank/Rank'
+import URL_SERVER from './Components/Utils/Utils'
 import './App.css';
 
 /*
@@ -110,7 +111,7 @@ class App extends Component {
   onButtonSubmit = () => {
     //Object.assign(this.state.imageUrl, this.state.input)
     this.setState({imageUrl: this.state.input})
-    fetch('http://localhost:3001/imageurl', {
+    fetch(URL_SERVER + 'imageurl', {
       method: 'post',
       headers: {
           'Content-Type': 'application/json'
@@ -122,7 +123,7 @@ class App extends Component {
     .then(response => response.json())
         .then(response => {
           if(response) {
-            fetch('http://localhost:3001/image', {
+            fetch(URL_SERVER + 'image', {
                 method: 'put',
                 headers: {
                     'Content-Type': 'application/json'
